@@ -1,2 +1,7 @@
-<%= link_to 'New status', new_status_path %> |
-<%= link_to 'Register', new_user_path %>
+<% if logged_in? %>
+  <%= link_to 'New status', new_status_path %> |
+  <%= link_to 'Logout', '/logout' %>
+<% else %>
+  <%= link_to 'Register', new_user_path %> |
+  <%= link_to 'Login', '/login' %>
+<% end %>
