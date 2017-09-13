@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
 
       flash['notice'] = 'Logged in successfully.'
-      redirect_to user_path(user.username)
+      redirect_to timeline_path
     else
       flash.now['error'] = 'Something went wrong.'
       render :new

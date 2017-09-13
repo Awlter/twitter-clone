@@ -46,6 +46,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def timeline
+    @statuses = []
+    current_user.leaders.each do |leader|
+      @statuses << leader.statuses
+    end
+    @statuses.flatten!
+    @statuses += current_user.statuses
+    @statuses.sort_by! {|status| status.created_at }.reverse!
+  end
+
   private
 
   def user_params
