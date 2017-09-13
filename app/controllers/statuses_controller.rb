@@ -7,7 +7,7 @@ class StatusesController < ApplicationController
 
   def create
     @status = Status.new(status_params)
-    @status.user_id = 1
+    @status.user_id = current_user.id
 
     if @status.save
       flash["notice"] = 'Status created!'
