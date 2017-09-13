@@ -5,7 +5,12 @@ TwitterClone::Application.routes.draw do
   post 'login', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'
 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create] do
+    member do
+      post 'follow', to: 'users#follow'
+      post 'unfollow', to: 'users#unfollow'
+    end
+  end
   resources :statuses, only: [:new, :create]
 
   get ':username', to: 'users#show', as: 'user'

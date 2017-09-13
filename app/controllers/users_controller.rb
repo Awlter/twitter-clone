@@ -21,6 +21,31 @@ class UsersController < ApplicationController
     @user = User.find_by username: params[:username]
   end
 
+  def follow
+    leader = User.find(params[:id])
+
+    if leader
+      leader.followers << current_user
+      flash['notice'] = "You have followed #{leader.username}!"
+      redirect_to user_path(leader.username)
+    else
+      wrong_path
+    end
+  end
+
+  def unfollow
+    leader = User.find(params[:id])
+    rel = Relationship.where(leader: leader, follower: current_user).first
+
+    if leader && rel
+      rel.destroy
+      flash['notice'] = "You are no longer following #{leader.username}"
+      redirect_to user_path(leader.username)
+    else
+      wrong_path
+    end
+  end
+
   private
 
   def user_params

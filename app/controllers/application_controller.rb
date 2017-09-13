@@ -18,4 +18,9 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
+
+  def wrong_path
+    flash['error'] = "Something went wrong."
+    redirect_to root_path
+  end
 end
