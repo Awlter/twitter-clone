@@ -1,4 +1,6 @@
 class StatusesController < ApplicationController
+  before_action :require_user
+
   def new
     @status = Status.new
   end
