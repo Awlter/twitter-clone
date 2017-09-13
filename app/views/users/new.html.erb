@@ -1,18 +1,34 @@
 <%= render 'shared/header', header: 'Register' %>
 <%= render 'shared/errors', obj: @user %>
 
-<%= form_for @user do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
-  <br>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-  <br>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <br>
-  <%= f.label :password_confirm %>
-  <%= f.password_field :password_confirmation %>
-  <br>
-  <%= f.submit 'Register' %>
+<%= form_for @user, html: {class: "form-horizontal"} do |f| %>
+  <div class="form-group">
+    <%= f.label :username, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-6">
+      <%= f.text_field :username, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :email, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-6">
+      <%= f.text_field :email, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :password, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-6">
+      <%= f.password_field :password, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :password_confirm, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-6">
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-6">
+      <%= f.submit 'Register', class: "btn btn-primary" %>
+    </div>
+  </div>
 <% end %>
