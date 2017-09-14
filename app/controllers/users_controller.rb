@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_user, only: [:follow, :unfollow, :metions]
+
   def index
     @users = User.all
   end
@@ -54,6 +56,10 @@ class UsersController < ApplicationController
     @statuses.flatten!
     @statuses += current_user.statuses
     @statuses.sort_by! {|status| status.created_at }.reverse!
+  end
+
+  def mentions
+    current_user.mark_unread_mentions!
   end
 
   private

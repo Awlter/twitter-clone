@@ -1,0 +1,9 @@
+<%= render 'shared/header', header: 'Mentions' %>
+
+<ul>
+  <% current_user.mentions.each do |mention| %>
+    <li>
+    <%= mention.status.body %> mentioned by <%= mention.status.creator.username %>
+    </li>
+  <% end %>
+</ul>

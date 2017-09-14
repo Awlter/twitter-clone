@@ -1,18 +1,30 @@
-<%= link_to 'Home', root_path %> |
-<% if logged_in? %>
+<div class="top-nav">
   <div class="float-left">
-    <%= link_to 'New status', new_status_path %> |
+    <%= link_to 'Home', root_path %> |
   </div>
-  <div class="float-left">
-    <%= link_to 'Timeline', timeline_path %> |
-  </div>
-  <div class="float-left">
-    <%= link_to 'Logout', '/logout' %>
-  </div>
-  <div class="float-right">
-    Hello, <%= current_user.username %>
-  </div>
-<% else %>
-  <%= link_to 'Register', new_user_path %> |
-  <%= link_to 'Login', '/login' %>
-<% end %>
+
+  <% if logged_in? %>
+    <div class="float-left">
+      <%= link_to 'New status', new_status_path %> |
+    </div>
+    <div class="float-left">
+      <%= link_to 'Timeline', timeline_path %> |
+    </div>
+    <div class="float-left">
+      <%= link_to "Mentions(#{current_user.unread_mentions_number})", mentions_path %> |
+    </div>
+    <div class="float-left">
+      <%= link_to 'Logout', '/logout' %>
+    </div>
+    <div class="float-right">
+      Hello, <%= current_user.username %>
+    </div>
+  <% else %>
+    <div class="float-left">
+      <%= link_to 'Register', new_user_path %> |
+    </div>
+    <div class="float-left">
+      <%= link_to 'Login', '/login' %>
+    </div>
+  <% end %>
+</div>
