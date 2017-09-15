@@ -14,6 +14,7 @@ TwitterClone::Application.routes.draw do
     end
   end
   resources :statuses, only: [:new, :create]
+  resources :hashtags, only: [:show]
 
   get ':username', to: 'users#show', as: 'user'
 end

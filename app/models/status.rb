@@ -14,7 +14,6 @@ class Status < ActiveRecord::Base
     usernames_array.each do |username_array|
       username = username_array.first
       user = User.find_by username: username
-      # binding.pry
       if user
         Mention.create(status: self, mentioned_user: user)
       end

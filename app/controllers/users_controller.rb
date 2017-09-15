@@ -60,6 +60,7 @@ class UsersController < ApplicationController
 
   def mentions
     current_user.mark_unread_mentions!
+    @mentions = current_user.mentions
   end
 
   private

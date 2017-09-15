@@ -10,8 +10,6 @@
 
 <p>
   <ul>
-  <% @user.statuses.each do |status| %>
-    <li><%= status.body %> on <%= status.created_at %></li>
-  <% end %>
+  <%= render @user.statuses %>
   </ul>
 </p>
